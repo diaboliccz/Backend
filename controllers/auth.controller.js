@@ -29,7 +29,7 @@ const authController = {
         );
 
         res.json({ status: 'ok' });
-    }
+    },
     login: async (req, res) => {
         const { email, password } = req.body;
 
@@ -53,7 +53,7 @@ const authController = {
         } else {
             res.json({ status: 'error', message: 'Login failed' });
         }
-    }
+    },
     tokenCheck: async (req, res) => {
         const token = req.headers['authorization'];
 

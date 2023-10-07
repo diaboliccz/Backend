@@ -3,14 +3,24 @@ const router = express.Router();
 
 const reportController = require('../controllers/report.controller');
 
-router.post('/booster_report_confirmation', reportController.boosterReportConfirm);
-router.post('/user_report_confirmation', reportController.userReportConfirm);
-router.post('/shop-buyer_report_confirmation', reportController.shopBuyerReportConfirm);
+router.use('/', (req, res, next) => {
+    console.log('Time: ', Date.now());
+    next();
+})
 
-router.get('/admin-ID-Confirm', reportController.IDConfirm);
-router.get('/admin-boosting-Confirm', reportController.boostingConfirm);
+router.get('/testReport', reportController.testReport);
 
-router.get('/admin-judge_boosting/:boostingID', reportController.showBoosterReport);
-router.get('/admin-judge_ID/:boostingID', reportController.showUserReport);
+router.post('/user-Report-Confirmation', reportController.userReportConfirm);
+router.post('/booster-Report-Confirmation', reportController.boosterReportConfirm)
+router.post('/shop-Buyer-Report-Confirmation', reportController.shopBuyerReportConfirm)
+
+router.get('/admin-ID-Confirmation', reportController.adminIDConfirm);
+router.get('/admin-Judge-ID/:uid', reportController.adminJudgeID);
+router.delete('/admin-Judge-ID/:uid', reportController.adminDeleteID);
+
+router.get('/admin-Boosting-Confirmtaion', reportController.adminBoostingConfirm);
+router.get('/admin-Judge-Boosting/:uid', reportController.adminJudgeBoosting);
+router.delete('/admin-Judge-Boosting/:uid', reportController.adminDeleteBoosting);
+
 
 module.exports = router;
