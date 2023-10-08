@@ -25,8 +25,8 @@ const PORT = 3333;
 // })
 
 // app.post('/test', (req, res) => {
-//     console.log(req.params);
-//     res.json(req.params);
+//     console.log(req.body);
+//     res.json(req.body);
 // })
 
 app.listen(PORT, () => {
