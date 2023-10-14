@@ -11,30 +11,30 @@ const uploadBuyerReport = require("../middleware/buyerreport");
 let routes = (app) => {
     router.get("/", homeController.getHome);
 
-    router.post("/Booster-Report-Confirmation", uploadReportController.tokenCheck, uploadBoostReport.fields([
+    router.post("/Booster-Report-Confirmation", uploadBoostReport.fields([
       {name: 'before_pic', maxCount: 1},
       {name: 'after_pic', maxCount: 1}]),
     uploadReportController.BoosterReportConfirmation);
 
-    router.post("/User-Report-Confirmation", uploadReportController.tokenCheck, uploadBoostReport.fields([
+    router.post("/User-Report-Confirmation", uploadBoostReport.fields([
       {name: 'before_pic', maxCount: 1},
       {name: 'after_pic', maxCount: 1}]),
     uploadReportController.BoosterReportConfirmation);
 
-    router.post("/Shop-Buyer-Report-Confirmation", uploadReportController.tokenCheck, uploadBuyerReport.single('pic'),
+    router.post("/Shop-Buyer-Report-Confirmation", uploadBuyerReport.single('pic'),
     uploadReportController.ShopBuyerReportConfirmation)
 
-    router.get("/Admin-ID-Confirmation", uploadReportController.tokenCheck, uploadReportController.AdminIDConfirmation);
+    router.get("/Admin-ID-Confirmation", uploadReportController.AdminIDConfirmation);
 
-    router.get("/Admin-Boosting-Confirmation", uploadReportController.tokenCheck, uploadReportController.AdminBoostingConfirmation);
-    
-    router.get("/Admin-Judge-ID", uploadReportController.tokenCheck, uploadReportController.AdminJudgeID);
+    router.get("/Admin-Boosting-Confirmation", uploadReportController.AdminBoostingConfirmation);
 
-    router.post("/Admin-Judge-ID", uploadReportController.tokenCheck, uploadReportController.AdminJudgeID);
+    router.get("/Admin-Judge-ID", uploadReportController.AdminJudgeID);
 
-    router.get("/Admin-Judge-Boosting", uploadReportController.tokenCheck, uploadReportController.AdminJudgeBoosting);
+    router.post("/Admin-Judge-ID", uploadReportController.AdminJudgeID);
 
-    router.post("/Admin-Judge-Boosting", uploadReportController.tokenCheck, uploadReportController.AdminJudgeBoosting);
+    router.get("/Admin-Judge-Boosting", uploadReportController.AdminJudgeBoosting);
+
+    router.post("/Admin-Judge-Boosting", uploadReportController.AdminJudgeBoosting);
 
     return app.use("/", router);
 }
